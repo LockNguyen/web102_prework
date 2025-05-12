@@ -32,6 +32,11 @@ body {
     text-align: center;
 }
 
+.stats-container {
+    display: flex;
+    cursor: pointer;
+}
+
 #num-contributions, #total-raised, #num-games {
     font-size: 50px;
 }
@@ -55,11 +60,43 @@ body {
     width: 300px;
     text-align: center;
     border-radius: 7px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s ease;
+}
+
+.game-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        0deg, 
+        transparent, 
+        transparent 30%, 
+        rgba(0,255,255,0.3)
+    );
+    transform: rotate(-45deg);
+    transition: all 0.5s ease;
+    opacity: 0;
 }
 
 .game-card:hover {
     cursor: pointer;
-    box-shadow: 0 0 30px lightblue;
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0,255,255,0.5);
+    /* box-shadow: 0 0 30px lightblue; */
+}
+
+.game-card:hover::before {
+    opacity: 1;
+    transform: rotate(-45deg) translateY(100%);
 }
 
 #button-container {
